@@ -92,7 +92,7 @@
         <DCCReference Include="uLogic.pas"/>
         <RcItem Include="Images\aut_LL292EP.jpg">
             <ResourceType>RCDATA</ResourceType>
-            <ResourceId>Image_1</ResourceId>
+            <ResourceId>IMAGE_1</ResourceId>
         </RcItem>
         <RcItem Include="Images\bel_SMM800.jpg">
             <ResourceType>RCDATA</ResourceType>

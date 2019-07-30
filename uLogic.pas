@@ -4,12 +4,11 @@ interface
 
 uses
   Winapi.Windows, System.SysUtils, Vcl.Dialogs, System.Generics.Collections,
-  System.Classes;
+  System.Classes, System.IOUtils;
 
 const
-  TYPE_RES = 'RCDATA';
   FILE_EXTENSION = '.jpg';
-  TEMP_DIR_NAME = '/FakeCamera/';
+  TEMP_DIR_NAME = 'FakeCamera\';
   IMAGE_1 = 'Image_1';
   IMAGE_2 = 'Image_2';
   IMAGE_3 = 'Image_3';
@@ -35,7 +34,7 @@ type
     /// <summary> Сохранить изображение в файл </summary>
     /// <param name="aDir">Путь к папке куда будет сохранено изображение</param>
     /// <param name="aFileName"> имя </param>
-    function SaveFile(aResName, aFileName: string): string;
+    procedure SaveFile(aResName, aFileName: string);
     /// <summary> Получить путь к временной папке </summary>
     /// <returns> Путь к временной папке </returns>
     function GetSysTempPath: string;
@@ -62,8 +61,8 @@ end;
 
 procedure TLogic.FreeTempDir;
 begin
-  if DirectoryExists(FTempDir) then
-    RemoveDir(FTempDir);
+  if TDirectory.Exists(FTempDir) then
+    TDirectory.Delete(FTempDir, True);
 end;
 
 function TLogic.GetNumbers: TList<TNumberData>;
@@ -74,6 +73,7 @@ begin
   try
     FTempDir := GetSysTempPath + TEMP_DIR_NAME;
 
+    ForceDirectories(FTempDir);
 
     nd.IdCamera := 1;  //
     nd.Number := '1A_1';
@@ -103,14 +103,13 @@ begin
   FreeTempDir;
 end;
 
-function TLogic.SaveFile(aResName, aFileName: string): string;
+procedure TLogic.SaveFile(aResName, aFileName: string);
 var
   res: TResourceStream;
 begin
-  Result := '';
-  res := TResourceStream.Create(Hinstance, aResName, Pchar(TYPE_RES));
+  res := TResourceStream.Create(Hinstance, aResName, RT_RCDATA);
   try
-    res.SaveToFile(Result);
+    res.SaveToFile(aFileName);
   finally
     FreeAndNil(res);
   end;
