@@ -4,41 +4,48 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, uLogik, Vcl.StdCtrls, Vcl.ExtCtrls;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, uLogic, Vcl.StdCtrls, Vcl.ExtCtrls, Jpeg;
 
 type
-  TfrmMainForm = class(TForm)
+  TfrmContainerNumber = class(TForm)
+    btnGetNumbers: TButton;
+    btnNewInspection: TButton;
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
-    procedure Panel1Click(Sender: TObject);
+    procedure btnGetNumbersClick(Sender: TObject);
+    procedure btnNewInspectionClick(Sender: TObject);
   private
     { Private declarations }
   public
     { Public declarations }
-    FLogik: TLogik;
+    FLogic: TLogic;
   end;
 
 var
-  frmMainForm: TfrmMainForm;
+  frmContainerNumber: TfrmContainerNumber;
 
 implementation
 
 {$R *.dfm}
 
-procedure TfrmMainForm.FormCreate(Sender: TObject);
+procedure TfrmContainerNumber.btnGetNumbersClick(Sender: TObject);
 begin
-  FLogik := TLogik.Create;
+  FLogic.GetNumbers;
 end;
 
-procedure TfrmMainForm.FormDestroy(Sender: TObject);
+procedure TfrmContainerNumber.btnNewInspectionClick(Sender: TObject);
 begin
-  FreeAndNil(FLogik);
+  FLogic.NewInspection;
 end;
 
-procedure TfrmMainForm.Panel1Click(Sender: TObject);
+procedure TfrmContainerNumber.FormCreate(Sender: TObject);
 begin
-createtempfile
+  FLogic := TLogic.Create;
+end;
 
+procedure TfrmContainerNumber.FormDestroy(Sender: TObject);
+begin
+  FreeAndNil(FLogic);
 end;
 
 end.

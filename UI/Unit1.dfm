@@ -8,7 +8,7 @@ object frmViewNumber: TfrmViewNumber
     Left = 0
     Top = 0
     Width = 320
-    Height = 227
+    Height = 210
     Align = alClient
     ExplicitLeft = -8
     ExplicitTop = 8
@@ -17,13 +17,16 @@ object frmViewNumber: TfrmViewNumber
   end
   object lblNumber: TLabel
     Left = 0
-    Top = 227
+    Top = 210
     Width = 320
-    Height = 13
+    Height = 30
     Align = alBottom
-    Caption = 'Label1'
-    ExplicitLeft = 1
-    ExplicitTop = 136
-    ExplicitWidth = 31
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = 30
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+    ExplicitWidth = 8
   end
 end

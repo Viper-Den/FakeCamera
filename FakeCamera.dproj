@@ -70,6 +70,9 @@
         <DCC_RemoteDebug>true</DCC_RemoteDebug>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win32)'!=''">
+        <VerInfo_Locale>1033</VerInfo_Locale>
+        <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
+        <DCC_DcuOutput>.\bin</DCC_DcuOutput>
         <DCC_RemoteDebug>false</DCC_RemoteDebug>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2)'!=''">
@@ -83,16 +86,22 @@
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
         <DCCReference Include="uMainForm.pas">
-            <Form>frmMainForm</Form>
+            <Form>frmContainerNumber</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="uLogic.pas"/>
-        <DCCReference Include="uUI.FakesCamera.pas"/>
-        <DCCReference Include="UI\Unit1.pas">
-            <Form>frmViewNumber</Form>
-            <FormType>dfm</FormType>
-            <DesignClass>TFrame</DesignClass>
-        </DCCReference>
+        <RcItem Include="Images\aut_LL292EP.jpg">
+            <ResourceType>RCDATA</ResourceType>
+            <ResourceId>Image_1</ResourceId>
+        </RcItem>
+        <RcItem Include="Images\bel_SMM800.jpg">
+            <ResourceType>RCDATA</ResourceType>
+            <ResourceId>Image_2</ResourceId>
+        </RcItem>
+        <RcItem Include="Images\bgr_CA1991AP.jpg">
+            <ResourceType>RCDATA</ResourceType>
+            <ResourceId>Image_3</ResourceId>
+        </RcItem>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
@@ -163,6 +172,12 @@
                 <Source>
                     <Source Name="MainSource">FakeCamera.dpr</Source>
                 </Source>
+                <Excluded_Packages>
+                    <Excluded_Packages Name="C:\Users\Public\Documents\RAD Studio\12.0\Bpl\Adani190.bpl">ADANI Components for Delphi</Excluded_Packages>
+                    <Excluded_Packages Name="C:\Users\Public\Documents\RAD Studio\12.0\Bpl\FRep4.bpl">FastReport4</Excluded_Packages>
+                    <Excluded_Packages Name="C:\Users\Public\Documents\RAD Studio\12.0\Bpl\AdaniDsgn190.bpl">ADANI Components Design Package for Delphi</Excluded_Packages>
+                    <Excluded_Packages Name="C:\Users\Public\Documents\RAD Studio\12.0\Bpl\Package1.bpl">File C:\Users\Public\Documents\RAD Studio\12.0\Bpl\Package1.bpl not found</Excluded_Packages>
+                </Excluded_Packages>
             </Delphi.Personality>
             <Deployment/>
             <Platforms>

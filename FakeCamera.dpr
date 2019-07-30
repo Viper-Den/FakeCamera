@@ -1,17 +1,17 @@
 program FakeCamera;
 
+{$R *.dres}
+
 uses
   Vcl.Forms,
-  uMainForm in 'uMainForm.pas' {frmMainForm},
-  uLogic in 'uLogic.pas',
-  uUI.FakesCamera in 'uUI.FakesCamera.pas',
-  Unit1 in 'UI\Unit1.pas' {frmViewNumber: TFrame};
+  uMainForm in 'uMainForm.pas' {frmContainerNumber},
+  uLogic in 'uLogic.pas';
 
 {$R *.res}
 
 begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
-  Application.CreateForm(TfrmMainForm, frmMainForm);
+  Application.CreateForm(TfrmContainerNumber, frmContainerNumber);
   Application.Run;
 end.
